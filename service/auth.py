@@ -14,7 +14,7 @@ class AuthService:
     def generate_tokens(self, email, password, is_refresh=False):
         user = self.user_service.get_user_by_email(email)
 
-        if user in None:
+        if user is None:
             raise Exception()
 
         if not is_refresh:
@@ -45,7 +45,7 @@ class AuthService:
 
         user = self.user_service.get_user_by_email(email=email)
 
-        if user in None:
+        if user is None:
             raise Exception()
 
         return self.generate_tokens(email, user.password, is_refresh=True)
